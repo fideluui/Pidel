@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Fidelya Raissa</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        body.dark .container {
+            background: #444;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        button {
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            opacity: 0.95;
+        }
+
+        .toggle-theme {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+        }
+
+        .hamburger {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #007bff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .hamburger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: white;
+            margin: 4px 0;
+        }
+        .hamburger:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #007bff;
+            padding: 60px 20px;
+            transition: left 0.3s ease;
+        }
+        .nav-menu.open {
+            left: 0;
+        }
+        .nav-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover {
+            padding-left: 10px;
+            color: #ffeb3b;
+        }
+
+        section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background: #fafafa;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        body.dark section {
+            background: #555;
+        }
+
+        .section-header {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .section-header:hover {
+            background: #0056b3;
+            letter-spacing: 1px;
+        }
+
+        .section-content {
+            display: none;
+            margin-top: 10px;
+        }
+        .section-content.show {
+            display: block;
+        }
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            animation: pop 0.4s ease;
+        }
+        body.dark .modal-content {
+            background: #444;
+            color: white;
+        }
+        .close {
+            float: right;
+            cursor: pointer;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+        .close:hover {
+            color: red;
+            transform: rotate(90deg) scale(1.2);
+        }
+
+        @keyframes pop {
+            from {transform: scale(0.5); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+
+<body>
+
+<button class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<nav class="nav-menu" id="navMenu">
+    <a href="#about" onclick="scrollToSection('about')">Tentang Saya</a>
+    <a href="#experience" onclick="scrollToSection('experience')">Pengalaman</a>
+    <a href="#education" onclick="scrollToSection('education')">Pendidikan</a>
+    <a href="#skills" onclick="scrollToSection('skills')">Keterampilan</a>
+</nav>
+
+<button class="toggle-theme" onclick="toggleTheme()">Tema</button>
+
+<div class="container">
+<header>
+    <h1>Fidelya Raissa</h1>
+    <p>Siswi SMKN 5 Kota Bekasi | RPL</p>
+</header>
+
+<section id="about">
+    <div class="section-header" onclick="toggleSection('about')">Tentang Saya</div>
+    <div class="section-content" id="about-content">
+        <p>Siswi SMK yang sedang mencari pengalaman PKL.</p>
+    </div>
+</section>
+
+<section id="experience">
+    <div class="section-header" onclick="toggleSection('experience')">Pengalaman</div>
+    <div class="section-content" id="experience-content">
+        <p>Belum ada pengalaman kerja formal.</p>
+    </div>
+</section>
+
+<section id="education">
+    <div class="section-header" onclick="toggleSection('education')">Pendidikan</div>
+    <div class="section-content" id="education-content">
+        <ul>
+            <li>SMKN 5 Kota Bekasi - RPL</li>
+            <li>SMPN 25 Kota Bekasi</li>
+            <li>SD Bani Saleh 4</li>
+        </ul>
+    </div>
+</section>
+
+<section id="skills">
+    <div class="section-header" onclick="toggleSection('skills')">Keterampilan</div>
+    <div class="section-content" id="skills-content">
+        <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Python, SQL</li>
+            <li>Kerja Tim & Komunikasi</li>
+        </ul>
+    </div>
+</section>
+</div>
+=
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">✖</span>
+        <h3>Halo 👋</h3>
+        <p>Ini adalah CV interaktif Fidelya Raissa</p>
+        <p>Siap PKL & belajar hal baru 🚀</p>
+    </div>
+</div>
+
+<script>
+function toggleTheme() {
+    document.body.classList.toggle('dark');
+}
+
+function toggleSection(id) {
+    document.getElementById(id + '-content').classList.toggle('show');
+}
+
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+hamburger.onclick = () => {
+    navMenu.classList.toggle('open');
+};
+
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({behavior: 'smooth'});
+    navMenu.classList.remove('open');
+}
+
+function openModal() {
+    document.getElementById('modal').style.display = 'flex';
+}
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
+window.onload = function () {
+    if (!localStorage.getItem("popupShown")) {
+        setTimeout(() => {
+            openModal();
+            localStorage.setItem("popupShown", "true");
+        }, 1000);
+    }
+};
+
+window.onclick = function(e) {
+    if (e.target.id === 'modal') closeModal();
+};
+</script>
+
+</body>
+</html>
